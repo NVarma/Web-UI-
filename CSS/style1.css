@@ -26,3 +26,21 @@
 img.dragged {background-color: white;}
 
 	}
+#container1 {
+    background-color: #e2dada;
+}
+body{
+    background-image: url("sf.jpg");
+}
+
+.centered-form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.panel{
+    opacity: 0.9;
+}
+.centered-form .panel {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}

@@ -1,313 +1,121 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="utf-8">
-	<title>Register2 </title>
-	<link rel = "stylesheet" type = "text/css" href = "CSS/style1.css" >
+<meta charset="utf-8">
+<title>Register2</title>
+<link rel="stylesheet" type="text/css" href="CSS/style1.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="font-awesome/css/font-awesome.min.css" />
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<fieldset id="userregistration" class="" align = "center" >
-		<form id = "registration1"  method = "post" action = "http://localhost:8800/servernew.js" class = "regsitrationformclass" >
-			<div class="container" id = "div1">
-				<h2  align= "center" id = "header1">User Registration</h2>
-				<table>
-					<tbody>
-						<tr>
-							<td>
-								<p>First Name: </p>
-							</td> 
-							<td>
-								<input type="text" class="inputclass" placeholder="First Name" id="firstname">
-							</td>
-						</tr>
+	<div class="container">
 
-						<tr>
-							<td>
-								<p>Last Name: </p>
-							</td>
-							<td>
-								<input type="text" class="inputclass" placeholder="Last Name" id="lastname">
-							</td>
-						</tr>
+		<div class="page-header" align="center">
+			<h1>Registration Form</h1>
+		</div>
+		<div class="container" id="container1">
+			<div class="row centered-form">
+				<div
+					class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">
+								<b> Please Register</b>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<form role="form" method="post"
+								action="http://localhost:8800/servernew.js">
+								<div class="form-group">
+									<p>First Name:</p>
+									<input type="text" class="inputclass" placeholder="First Name"
+										id="firstname">
+								</div>
+								<div class="form-group">
+									<p>Last Name:</p>
+									<input type="text" class="inputclass" placeholder="Last Name"
+										id="lastname">
+								</div>
+								<div class="form-group">
+									<p>Email:</p>
+									<input type="text" class="inputclass"
+										placeholder="Email Address" id="email" onBlur="isEmailValid()">
+								</div>
+								<div class="form-group">
+									<p>Password:</p>
+									<input type="password" class="inputclass"
+										placeholder="Password"
+										title="Password must contain minimum 3 upper case, 2 lower case and 2 special characters"
+										onBlur="validatePassword()" id="password1"> <i
+										title="Password must contain minimum 3 upper case, 2 lower case and 2 special characters"></i>
+									<progress value="0" max="100" name="progress" id="progress"></progress>
+								</div>
+								<div class="form-group">
+									<p>Confirm Password</p>
+									<input type="password" class="inputclass"
+										placeholder="retype password" id="password2"
+										onBlur="matchPassword()">
+								</div>
+								<div class="form-group">
+									<p>Date of Birth</p>
+									<input type="date" name="DOB" id="dob1"
+										placeholder="Date of Birth">
+								</div>
+								<div class="form-group">
+									<p>Date of Birthwith local time</p>
+									<input type="datetime-local" id="dob3"
+										placeholder="Date of Birthwith local time">
+								</div>
+								<div class="form-group">
+									<p>SSN</p>
+									<input type="text" name="ssn" id="ssn" title="SSN"
+										placeholder="xxx-xx-xxxx" onBlur="isSSNValid()">
+								</div>
+								<div class="form-group">
+									<p>Phone Number</p>
+									<input type="text" placeholder="xxx-xxx-xxxx" id="phone_no"
+										onBlur="isPhoneNoValid()">
+								</div>
+								<div class="form-group">
+									<p>Credit Card</p>
+									<input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" id="creditcard"
+										onBlur="isCreditCardValid()">
+								</div>
+								<div id="src">
+									<p id="select">drag the appropriate image</p>
+									<img draggable="true" id="angular" src="Images/angular.png"
+										alt="Angluar JS" height="100" width="80" class="img-rounded" />
+									<img draggable="true" id="ember" src="Images/ember.jpg"
+										alt="EMBER JS" height="100" width="80" class="img-rounded" />
+									<img draggable="true" id="node" src="Images/node.jpg"
+										alt="Node JS" height="100" width="80" class="img-rounded" />
+									<div id="target">
+										<p id="msg">Drop Here</p>
+									</div>
+								</div>
 
-						<tr>
-							<td>
-								<p>Email: </p>
-							</td>
-							<td>
-								<input type="text" class="inputclass" placeholder="Email Address" id="email"  onBlur = "isEmailValid()">
-							</td>
-						</tr>
-
-						<tr>
-							<td>
-								<p>Password: </p>
-							</td>
-							<td>
-								<input type="password" class="inputclass" placeholder="Password" title="Password must contain minimum 3 upper case, 2 lower case and 2 special characters" onBlur="validatePassword()" id="password1">
-							</td>
-							<td>
-								<i  title="Password must contain minimum 3 upper case, 2 lower case and 2 special characters"></i>
-							</td> 
-							<td>
-								<progress value="0" max="100" name="progress" id="progress"></progress>
-							</td> 
-						</tr> 
-
-						<tr>
-							<td>
-								<p>Confirm Password</p>
-							</td>
-							<td>
-								<input type="password" class="inputclass"  placeholder="retype password" id="password2" onBlur="matchPassword()">
-							</td>
-						</tr>
-
-						<tr>
-							<td>
-								<p>Date of Birth</p>
-							</td>
-							<td>
-								<input type="date" name="DOB" id="dob1"   placeholder ="Date of Birth">
-							</td>
-						</tr>
-
-						<tr>
-							<td>
-								<p>Date of Birthwith local time</p>
-							</td>
-							<td>
-								<input type="datetime-local"  id="dob3" placeholder = "Date of Birthwith local time">
-							</td>
-						</tr>
-
-						<tr>
-							<td>
-								<p>SSN</p>
-							</td>
-							<td>
-								<input type="text" name="ssn" id="ssn"
-								title="SSN"  placeholder="xxx-xx-xxxx" onBlur = "isSSNValid()">
-							</td>
-						</tr>
-
-						<tr>
-							<td>
-								<p>Phone Number</p>
-							</td>
-							<td>
-								<input type="text"  placeholder="xxx-xxx-xxxx" id="phone_no" onBlur = "isPhoneNoValid()">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<p>Credit Card</p>
-							</td>
-							<td>
-								<input type="text"  placeholder="xxxx-xxxx-xxxx" id="creditcard" onBlur = "isCreditCardValid()">
-							</td>
-						</tr>
-
-						<tr>
-							<td>
-								<p>URL: </p>
-							</td> 
-							<td>
-								<input type="URL" class="inputclass" placeholder="URL" id="url">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<p>Age: </p>
-							</td> 
-							<td>
-								<input type="text" class="inputclass" placeholder="Age" id="age">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<p>Gender: </p>
-							</td> 
-							<td>
-								<input type="text" class="inputclass" placeholder="Gender" id="gender">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div id="src">
-					<p id="select" > drag the appropriate image </p>
-					<img draggable="true" id="angular" src="Images/angular.png" alt="Angluar JS" height="100" width="100"/> 
-					<img draggable="true" id="ember" src="Images/ember.jpg" alt="EMBER JS" height="100" width="100"/>
-					<img draggable="true" id="node" src="Images/node.jpg" alt="Node JS" height="100" width="100"/>
-					<div id="target">
-						<p id="msg">Drop Here</p>
+								<button class="btn btn-info btn-block" id="btn1"
+									onclick="storeData()" disabled>submit</button>
+							</form>
+						</div>
 					</div>
 				</div>
-
-				<button id ="btn1" onclick = "storeData()"disabled>submit</button>
 			</div>
-		</form>
-	</fieldset>
+		</div>
+	</div>
 	<script>
-
-		function isEmailValid (email)
-		{
-			var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-			var email = document.getElementById("email");
-			if(email.value.match(re)) {
-				/*alert("valid email");*/
-				return true;
-			}
-			else {
-				alert ("please enter a valid email address");
-				email.focus();
-				return false;
-			}
-
-		};
-
-		function validatePassword(){
-
-			var regex=/^(?=.*[a-z]{2})(?=.*[A-Z]{3})(?=.*[#$@!%&*?]{2})([A-Za-z0-9\d#$@!%&*?]{7,24})/;
-			var regex1= /^(?=.*[a-z]{2})(?=.*[A-Z]{3})(?=.*[#$@!%&*?]{3,5})([A-Za-z0-9\d#$@!%&*?]{8,24})/;
-			var regex2 = /^(?=.*[a-z]{2})(?=.*[A-Z]{3})(?=.*[#$@!%&*?]{6,19})([A-Za-z0-9\d#$@!%&*?]{11,24})/;
-			var password1 = document.getElementById("password1").value;
-
-			if (!regex.test(password1)) {
-				alert("password must contain minimum 3 upper case, 2 lower case and 2 special characters");
-			} else {
-				document.getElementById("progress").value=33;
-			}
-
-			if (!regex1.test(password1)) {
-			} else {
-				document.getElementById("progress").value=66;
-			}
-
-			if (!regex2.test(password1)) {
-			} else {
-				document.getElementById("progress").value=100;
-			}
-
-		};
-
-		function matchPassword(){
-
-			var password1 = document.getElementById("password1").value;
-			var password2 = document.getElementById("password2").value;
-
-			if(password1 == password2){
-				/*alert("password matches");*/
-
-			}
-			else{
-				alert("password dosent match");
-			}
-
-		};
-
-		function isPhoneNoValid(phone_no){
-			var reg1 = /^\(?\d{3}\)?-\d{3}-\d{4}$/;
-			var phone_no = document.getElementById("phone_no");
-			if(phone_no.value.match(reg1))
-			{
-				/*alert("valid phone number");*/
-				return true;
-			}
-			else{
-				alert("please enter a valid phone number");
-				return false;
-				phone_no.focus();
-			}
-		}; 
-
-		function isSSNValid(ssn){
-			var reg2 = /^\d{3}-\d{2}-\d{4}$/;
-			var ssn = document.getElementById("ssn");
-			if(ssn.value.match(reg2))
-			{
-				/*alert("valid SSN");*/
-				return true;
-			}
-			else{
-				alert("please enter a valid SSN");
-				return false;
-				ssn.focus();
-			}
-		}; 
-
-		function isCreditCardValid(creditcard){
-			var reg3 = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
-			var creditcard = document.getElementById("creditcard");
-			if(creditcard.value.match(reg3))
-			{
-				/*alert("valid credit card number");*/
-				return true;
-			}
-			else{
-				alert("please enter a valid credit card number");
-				return false;
-				creditcard.focus();
-			}
-		}; 
-
-		var val = document.getElementById("select").innerHTML; 
-		var imgValue;
-		val = Math.floor(3*Math.random());
-		if(val ===0)
-		{
-			document.getElementById("select").innerHTML = "Drag and drop angular.js";
-			imgValue = "angular";
-		}
-		if(val ===1)
-		{
-			document.getElementById("select").innerHTML = "Drag and drop ember.js";
-			imgValue = "ember";
-		}
-		if(val ===2)
-		{
-			document.getElementById("select").innerHTML = "Drag and drop node.js";
-			imgValue = "node";
-		}
-
-		var src = document.getElementById("src");
-		var target = document.getElementById("target");
-		var msg = document.getElementById("msg");
-		var draggedID;
-		target.ondragenter = handleDrag;
-		target.ondragover = handleDrag;
-
-		target.ondrop = function(e) {
-			var newElem = document.getElementById(draggedID).cloneNode(false);
-			target.innerHTML = "";
-			target.appendChild(newElem);
-			e.preventDefault();
-		}
-		function handleDrag(e) {
-			e.preventDefault();
-		}
-		src.ondragstart = function(e) {
-			draggedID = e.target.id;
-			e.target.classList.add("dragged");
-		}
-		src.ondragend = function(e) {
-			var elems = document.querySelectorAll(".dragged");
-			console.log(draggedID);
-			console.log(imgValue);
-			for (var i = 0; i < elems.length; i++) {
-				elems[i].classList.remove("dragged");
-			}
-
-			if(draggedID == imgValue)
-			{
-				document.getElementById("btn1").disabled = false;
-
-			}
-		}
-
+	
 	</script>
 	<script src="buttonRequest.js" type='text/javascript'></script>
-	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+	<script
+		src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
 
 </body>
 </html>

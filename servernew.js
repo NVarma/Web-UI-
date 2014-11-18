@@ -12,7 +12,7 @@ http.createServer(function (request,response){
 	});
 	
 	request.on('end', function(){
-		 console.log("in req.on end func1 ");
+		 console.log("in req.on end func");
 		try {
 		var dataObj = JSON.parse(formdata);
 		var firstname = JSON.stringify(dataObj.firstname);
@@ -23,10 +23,7 @@ http.createServer(function (request,response){
 		var dob3 = JSON.stringify(dataObj.dob3);
 		var ssn = JSON.stringify(dataObj.ssn);
 		var phone_no = JSON.stringify(dataObj.phone_no);
-		var creditcard = JSON.stringify(dataObj.creditcard);
-		var url = JSON.stringify(dataObj.url);
-		var age = JSON.stringify(dataObj.age);
-		var gender = JSON.stringify(dataObj.gender)
+		var creditcard = JSON.stringify(dataObj.creditcard)
 	}
 	catch(err)
 	{
@@ -39,16 +36,20 @@ http.createServer(function (request,response){
 		var objectDataB = db1();
 		console.log("in db1 method..connection establshd ");
 			console.log("data is "+dataObj);
-	objectDataB.query("INSERT INTO registration1(firstname, lastname, email, password1, dob1, dob3, ssn, phone_no, creditcard, url, age, gender) VALUES ('"+firstname+"','"+lastname+"','"+email+"','"+password1+"','"+dob1+"','"+dob3+"','"+ssn+"','"+phone_no+"','"+creditcard+"','"+url+"','"+age+"','"+gender+"');", function (err){
+	objectDataB.query("INSERT INTO registration1(firstname, lastname, email, password1, dob1, dob3, ssn, phone_no, creditcard) VALUES ('"+firstname+"','"+lastname+"','"+email+"','"+password1+"','"+dob1+"','"+dob3+"','"+ssn+"','"+phone_no+"','"+creditcard+"');", function (err){
 		objectDataB.end();
-		if(err) throw err;
+		if(err) {
+		console.log(error.message);
+				response.writeHead(400, {'Content-Type': 'text/plain'}).end();
+				request.connection.destroy();
+			}
 		response.writeHead(	200, {
 			'Content-Type': 'text/plain',
 			'Access-Control-Allow-Origin': '*',
 			'Access-Control-Allow-Methods': 'GET, POST'});
 
-		response.end("database enrty made");
+		response.end("User Details stored successfully");
 	});
 });
 }).listen(8800);
-	console.log("server is listening to port 8888");		
+	console.log("server is listening to port 8800");		
