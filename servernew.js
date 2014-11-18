@@ -38,16 +38,16 @@ http.createServer(function (request,response){
 		var connection = mysql.createConnection( {host: 'localhost', user: 'root', password: 'root', port: 3305, database: 'test'}); return connection;}
 		var objectDataB = db1();
 		console.log("in db1 method..connection establshd ");
-
+			console.log("data is "+dataObj);
 	objectDataB.query("INSERT INTO registration1(firstname, lastname, email, password1, dob1, dob3, ssn, phone_no, creditcard, url, age, gender) VALUES ('"+firstname+"','"+lastname+"','"+email+"','"+password1+"','"+dob1+"','"+dob3+"','"+ssn+"','"+phone_no+"','"+creditcard+"','"+url+"','"+age+"','"+gender+"');", function (err){
 		objectDataB.end();
 		if(err) throw err;
 		response.writeHead(	200, {
-			'Content-Type': 'application/json',
+			'Content-Type': 'text/plain',
 			'Access-Control-Allow-Origin': '*',
 			'Access-Control-Allow-Methods': 'GET, POST'});
 
-		//response.end("database enrty made");
+		response.end("database enrty made");
 	});
 });
 }).listen(8800);

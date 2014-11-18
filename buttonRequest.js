@@ -31,6 +31,7 @@ function handleButtonRequest(e){
 		httpRequest.onreadstatechange = handleResponse;
 		httpRequest.open("POST", "http://localhost:8800/servernew.js",true);
 		httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		 console.log("in andle button request "+JSON.stringify(userDetails));
 		httpRequest.send(JSON.stringify(userDetails));
 	}
 	catch(err)
@@ -43,6 +44,7 @@ function handleResponse(e){
 
 	if(httpRequest.readyState == 4 && httpRequest.status == 200)
 	{
-		console.log(httpRequest.responseText);
+		console.log("this is hanfle rpsoense" +httpRequest.responseText);
+		//document.getElementById("btn1").innerHTML	= httpRequest.responseText;
 	}
 }
